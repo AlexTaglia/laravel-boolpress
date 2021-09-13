@@ -6,17 +6,17 @@
         <div class="col-md-10">
     
             @foreach($allPosts as $post)
-                <div class="card mb-4">
+            <div class="card mb-4">
+                    <h2>{{$post->title}}</h2>
+                    <p class="">{{$post->created_at}}</p>
                     <div class="d-flex flex-wrap">
-                        <div class="left col-4">
+                        <div class="left col-4 p-0">
                             <img class="img-fluid" src="{{ $post->img }}" alt="{{$post->title}}"/>
                         </div>
                         <div class="right col-8">
-                            <h2>{{$post->title}}</h2>
+                            <p>{{$post->content}}</p>
                         </div>
                         <div class="bottom col-12 mt-4">
-                            <p>{{$post->content}}</p>
-                            <p class="">{{$post->created_at}}</p>
                         </div>
                     </div>
                 </div>
