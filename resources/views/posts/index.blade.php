@@ -4,8 +4,8 @@
 
 <div class="container">
 
-<table class="table post-table">
-        <thead>
+<table class="table post-table ">
+        <thead class="text-uppercase">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
@@ -23,7 +23,7 @@
                     <td>{{$post->content}}</td>
                     <td><img src="{{$post->img}}" alt="Image of {{$post->title}}"></td>
                     <td>{{$post->created_at}}</td>
-                    <td><a href="{{ route('post.show', $post) }}"><i class="fas fa-search-plus"></i></a></td>
+                    <td class="text-center"><a href="{{ route('post.show', $post) }}"><i class="fas fa-search-plus"></i></a></td>
 
                 </tr>
             @endforeach
