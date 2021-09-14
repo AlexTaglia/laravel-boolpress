@@ -7,7 +7,7 @@
         <div class="col-12">
     
             <div class="card mb-4">
-                <h2>{{$allPosts->title}}</h2>
+                <h2>#{{$allPosts->id}} - {{$allPosts->title}}</h2>
                 <p class="">{{$allPosts->created_at}}</p>
                 <div class="d-flex flex-wrap">
                         <div class="left col-4 p-0">
