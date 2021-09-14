@@ -18,7 +18,7 @@ class PostsTableSeeders extends Seeder
             $bookObject = new Post();
             $bookObject->title = $faker->sentence(5);  
             $bookObject->content = $faker->paragraph(5);
-            $bookObject->img = $faker->imageUrl(640, 480, 'post', true);
+            $bookObject->img = "https://picsum.photos/300/300?random={{$i}}";
             $bookObject->save();
         }
     }
