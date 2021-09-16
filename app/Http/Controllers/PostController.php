@@ -12,6 +12,8 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // -------------------------------------------------------index
     public function index()
     {
         $allPosts = Post::all();
@@ -24,9 +26,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // -------------------------------------------------------Create
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -35,9 +38,25 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    // -------------------------------------------------------Request
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'img' => 'url'
+        ]);
+
+        // dd($request); 
+        $data = $request->all();
+
+        $post = new Post;
+        $post->title = $data['title'];
+        $post->content = $data['content'];
+        $post->img = $data['img'];
+        $post->save();
+
+        return redirect()->route('post.show', $post->id);
     }
 
     /**
@@ -46,12 +65,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // -------------------------------------------------------Show
     public function show($id)
     {
-
-        $allPosts = Post::find($id);
-        return view('posts.show', compact('allPosts'));
-
+        $selectedPost = Post::find($id);
+        return view('posts.show', compact('selectedPost'));
     }
 
     /**
@@ -60,6 +78,8 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    // -------------------------------------------------------Edit
     public function edit($id)
     {
         //
@@ -72,6 +92,8 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    // -------------------------------------------------------update
     public function update(Request $request, $id)
     {
         //

@@ -2,7 +2,9 @@
 
 @section('content')
 
-<div class="container">
+<div class="container index-container">
+
+<a href="{{ route('post.create') }}"><i class="far fa-plus-square"></i> Add post</a>
 
 <table class="table post-table ">
         <thead class="text-uppercase">
@@ -12,7 +14,7 @@
                 <th scope="col">Content</th>
                 <th scope="col">Image</th>
                 <th scope="col">Published on</th>
-                <th scope="col">Details</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -20,10 +22,14 @@
                 <tr>
                     <th scope="row">{{$post->id}}</th>
                     <td>{{$post->title}}</td>
-                    <td>{{$post->content}}</td>
+                    <td class="d-none d-md-block content">{{$post->content}}</td>
                     <td><img src="{{$post->img}}" alt="Image of {{$post->title}}"></td>
                     <td>{{$post->created_at}}</td>
-                    <td class="text-center"><a href="{{ route('post.show', $post) }}"><i class="fas fa-search-plus"></i></a></td>
+                    <td class="text-center">
+                        <a href="{{ route('post.show', $post) }}"><i class="fas fa-search-plus"></i></a>
+                        <a href=""><i class="fas fa-pencil-alt"></i></a>
+                        <a href=""><i class="far fa-trash-alt"></i></a>
+                    </td>
 
                 </tr>
             @endforeach
