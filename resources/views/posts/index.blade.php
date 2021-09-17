@@ -50,12 +50,12 @@
 
                         <!--Modal Delete -->
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn" data-toggle="modal" data-target="#confirmModal">
+                        <button type="button" class="btn" data-toggle="modal" data-target="#confirmModal{{$post->id}}">
                             <i class="far fa-trash-alt"></i>
                         </button>
                         
                         <!-- Modal -->
-                        <div class="modal fade" id="confirmModal" aria-labelledby="confirmModalLabel">
+                        <div class="modal fade" id="confirmModal{{$post->id}}" aria-labelledby="confirmModalLabel">
                             <div class="modal-dialog">
                                 <div class="modal-content">
 
