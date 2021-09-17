@@ -56,7 +56,7 @@ class PostController extends Controller
         $post->img = $data['img'];
         $post->save();
 
-        return redirect()->route('post.show', $post->id);
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**
@@ -80,9 +80,10 @@ class PostController extends Controller
      */
 
     // -------------------------------------------------------Edit
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        // dd($post);
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -94,9 +95,14 @@ class PostController extends Controller
      */
 
     // -------------------------------------------------------update
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $data = $request->all();
+
+        $post->update($data);
+        // dd($post);
+        return redirect()->route('posts.show', $post->id);
+
     }
 
     /**
@@ -105,8 +111,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+
+    // -------------------------------------------------------destroy
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts.index');
+
     }
 }

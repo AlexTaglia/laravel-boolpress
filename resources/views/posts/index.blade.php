@@ -4,7 +4,7 @@
 
 <div class="container index-container">
 
-<a href="{{ route('post.create') }}"><i class="far fa-plus-square"></i> Add post</a>
+<a href="{{ route('posts.create') }}"><i class="far fa-plus-square"></i> Add post</a>
 
 <table class="table post-table ">
         <thead class="text-uppercase">
@@ -22,15 +22,30 @@
                 <tr>
                     <th scope="row">{{$post->id}}</th>
                     <td>{{$post->title}}</td>
-                    <td class="d-none d-md-block content">{{$post->content}}</td>
+                    <td>{{$post->content}}</td>
                     <td><img src="{{$post->img}}" alt="Image of {{$post->title}}"></td>
                     <td>{{$post->created_at}}</td>
                     <td class="text-center">
-                        <a href="{{ route('post.show', $post) }}"><i class="fas fa-search-plus"></i></a>
-                        <a href=""><i class="fas fa-pencil-alt"></i></a>
-                        <a href=""><i class="far fa-trash-alt"></i></a>
-                    </td>
+                        <a href="{{ route('posts.show', $post) }}">
+                            <button>
+                                <i class="fas fa-search-plus"></i>
+                            </button>
+                        </a>
 
+                        <a href="{{ route('posts.edit', $post) }}">
+                        <button>
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        </a>
+                        
+                        <form action="{{ route('posts.destroy', $post) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

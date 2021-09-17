@@ -34,7 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <ul class="d-flex">
-                            <li><a class="nav-link" href="{{ route('post.index') }}">Posts</a></li>
+                            <li><a class="nav-link" href="{{ route('posts.index') }}">Posts</a></li>
                         </ul>
                     </ul>
 

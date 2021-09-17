@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <a href="{{ route('post.index') }}"><i class="fas fa-angle-left"></i></a>
+    <a href="{{ route('posts.index') }}"><i class="fas fa-angle-left"></i></a>
 
     <div class="row justify-content-center">
         <div class="col-12">

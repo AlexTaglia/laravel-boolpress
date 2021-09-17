@@ -14,21 +14,24 @@
         </div>
     @endif
 
-    <form action="{{route('posts.store')}}" method='post'>
+    <form action="{{route('posts.update', $post)}}" method='post'>
+        
         @csrf
+        @method('PUT')
+
         <div class="form-group">
             <label for="title">Titolo:</label>
-            <input class="form-control" type="text" name="title" id="title" maxlength="255">
+            <input class="form-control" type="text" name="title" id="title" maxlength="255" value="{{ $post->title }}">
         </div>
 
         <div class="form-group">
             <label for="title">Contenuto:</label>
-            <input class="form-control" type="text" name="content" id="content">
+            <input class="form-control" type="text" name="content" id="content" value="{{ $post->content }}">
         </div>
 
         <div class="form-group">
             <label for="img">Immagine:</label>
-            <input class="form-control" type="text" name="img" id="img">
+            <input class="form-control" type="text" name="img" id="img" value="{{ $post->img }}">
         </div>
 
         <div class="form-group">
