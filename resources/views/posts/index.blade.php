@@ -26,27 +26,63 @@
                     <td><img src="{{$post->img}}" alt="Image of {{$post->title}}"></td>
                     <td>{{$post->created_at}}</td>
                     <td class="text-center">
+                        <!-- Show -->
                         <a href="{{ route('posts.show', $post) }}">
                             <button>
                                 <i class="fas fa-search-plus"></i>
                             </button>
                         </a>
 
+                        <!-- Edit -->
                         <a href="{{ route('posts.edit', $post) }}">
                         <button>
                             <i class="fas fa-pencil-alt"></i>
                         </button>
                         </a>
                         
+                        <!-- Delete -->
                         <form action="{{ route('posts.destroy', $post) }}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">
-                                <i class="far fa-trash-alt"></i>
-                            </button>
+                            <button type="submit"><i class="far fa-trash-alt"></i></button>
                         </form>
+
+
+                        <!--Modal Delete -->
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn" data-toggle="modal" data-target="#confirmModal">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="confirmModal" aria-labelledby="confirmModalLabel">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <div class="modal-body">
+                                        Sei sicuro di voler eliminare il post? #{{$post->id}}
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+
+                                        <form action="{{ route('posts.destroy', $post) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-primary">Yes</button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </td>
                 </tr>
+
+
+
             @endforeach
         </tbody>
     </table>
