@@ -41,16 +41,17 @@
                         </a>
                         
                         <!-- Delete -->
+                        <!--
                         <form action="{{ route('posts.destroy', $post) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit"><i class="far fa-trash-alt"></i></button>
                         </form>
+                        -->
 
-
-                        <!--Modal Delete -->
+                        <!--Delete with modal -->
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn" data-toggle="modal" data-target="#confirmModal{{$post->id}}">
+                        <button type="button" data-toggle="modal" data-target="#confirmModal{{$post->id}}">
                             <i class="far fa-trash-alt"></i>
                         </button>
                         
