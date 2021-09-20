@@ -47,7 +47,6 @@ class PostController extends Controller
             'img' => 'url'
         ]);
 
-        // dd($request); 
         $data = $request->all();
 
         $post = new Post;
@@ -97,10 +96,13 @@ class PostController extends Controller
     // -------------------------------------------------------update
     public function update(Request $request, Post $post)
     {
+        $request->validate([
+            'img' => 'url'
+        ]);
+
         $data = $request->all();
 
         $post->update($data);
-        // dd($post);
         return redirect()->route('posts.show', $post->id);
 
     }
@@ -117,6 +119,5 @@ class PostController extends Controller
     {
         $post->delete();
         return redirect()->route('posts.index');
-
     }
 }
