@@ -49,7 +49,7 @@ class PostController extends Controller
             'title' => 'required',
             'content' => 'required',
             'img' => ['required', 'url'],
-            'pricategory_id' => 'required',
+            'category_id' => 'required',
         ]);
 
         $data = $request->all();
@@ -107,7 +107,7 @@ class PostController extends Controller
             'title' => 'required',
             'content' => 'required',
             'img' => ['required', 'url'],
-            'pricategory_id' => 'required',
+            'category_id' => 'required',
         ]);
 
         $data = $request->all();
