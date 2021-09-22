@@ -35,6 +35,17 @@
         </div>
 
         <div class="form-group">
+        <label for="category_id">Categoria</label>
+            <select class="form-control" id="category_id" name="category_id">
+                
+                @foreach($categories as $category)
+                    <option value="{{$category->id ++}}" {{ $category->id == $post->category->id + 1 ? 'selected' : '' }}>{{ $category->category }}</option>
+                @endforeach
+
+            </select>
+        </div>
+
+        <div class="form-group">
             <input type="submit" value="Salva">
         </div>
 
