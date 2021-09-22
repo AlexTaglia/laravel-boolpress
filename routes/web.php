@@ -18,3 +18,5 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::resource('posts', 'PostController')->middleware('auth');
+
+Route::get('/app', 'WebAppController@home');
