@@ -10,8 +10,9 @@
         <thead class="text-uppercase">
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Categoria</th>
                 <th scope="col">Title</th>
-                <th scope="col">Content</th>
+                <!-- <th scope="col">Content</th> -->
                 <th scope="col">Image</th>
                 <th scope="col">Published on</th>
                 <th scope="col">Actions</th>
@@ -21,8 +22,9 @@
             @foreach($allPosts as $post)
                 <tr>
                     <th scope="row">{{$post->id}}</th>
+                    <td>{{$post->category->category}}</td>
                     <td>{{$post->title}}</td>
-                    <td>{{$post->content}}</td>
+                    <!-- <td>{{$post->content}}</td> -->
                     <td><img src="{{$post->img}}" alt="Image of {{$post->title}}"></td>
                     <td>{{$post->created_at}}</td>
                     <td class="text-center">

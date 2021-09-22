@@ -32,6 +32,16 @@
         </div>
 
         <div class="form-group">
+        <label for="category_id">Categoria</label>
+            <select class="form-control" id="category_id" name="category_id">
+            <option selected>Scegli una categoria...</option>
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{ $category->category }}</option>
+                    @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
             <input type="submit" value="Salva">
         </div>
 

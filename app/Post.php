@@ -9,6 +9,12 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
-        'img'
+        'img',
+        'category_id'
     ];
+
+    //Dove c'è la foreign key "belongsTo"
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
 }

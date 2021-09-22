@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Post;
 
@@ -29,7 +30,8 @@ class PostController extends Controller
     // -------------------------------------------------------Create
     public function create()
     {
-        return view('posts.create');
+        $categories = Category::all();
+        return view('posts.create', compact('categories'));
     }
 
     /**
@@ -39,12 +41,15 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // -------------------------------------------------------Request
+    // -------------------------------------------------------Store
     public function store(Request $request)
     {
 
         $request->validate([
-            'img' => 'url'
+            'title' => 'required',
+            'content' => 'required',
+            'img' => ['required', 'url'],
+            'pricategory_id' => 'required',
         ]);
 
         $data = $request->all();
@@ -53,6 +58,8 @@ class PostController extends Controller
         $post->title = $data['title'];
         $post->content = $data['content'];
         $post->img = $data['img'];
+        $post->category_id = $data['category_id'];
+
         $post->save();
 
         return redirect()->route('posts.show', $post->id);
@@ -97,7 +104,10 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
-            'img' => 'url'
+            'title' => 'required',
+            'content' => 'required',
+            'img' => ['required', 'url'],
+            'pricategory_id' => 'required',
         ]);
 
         $data = $request->all();
